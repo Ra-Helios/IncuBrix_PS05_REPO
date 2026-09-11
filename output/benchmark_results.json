@@ -1,0 +1,40 @@
+{
+  "schema_version": "benchmark_v1",
+  "meta": {
+    "source_file": "two_speakers.mp4",
+    "target_aspect_ratio": "9:16",
+    "analysis_fps": 15,
+    "strategy": "A",
+    "device": "cpu"
+  },
+  "metrics": {
+    "total_frames": 135,
+    "active_speaker_frames": 133,
+    "speaker_proportion": 0.985,
+    "fallback_frames": 2,
+    "fallback_proportion": 0.015,
+    "speaker_switch_events": 2,
+    "fallback_reason_counts": {
+      "no_speech": 2
+    },
+    "max_speaker_run_frames": 133,
+    "mean_speaker_run_frames": 133.0,
+    "crop_center_jitter_mean_px": 4.56,
+    "crop_center_jitter_p95_px": 29.5,
+    "crop_center_velocity_mean_px_per_frame": 2.28,
+    "crop_center_velocity_p95_px_per_frame": 14.75,
+    "confidence_distribution": {
+      "min": 0.5,
+      "mean": 0.5,
+      "p95": 0.5,
+      "max": 0.5
+    },
+    "crop_bound_violations": 0,
+    "crop_in_bounds_proportion": 1.0
+  },
+  "timing": {
+    "analysis_seconds": 2.825,
+    "source_duration_seconds": 9.0,
+    "realtime_factor": 0.314
+  }
+}
