@@ -1,0 +1,100 @@
+# Baseline Configuration
+# Active-Speaker Detection and Smart Video Reframing
+
+# Analysis settings - use downscaled frames to reduce CPU load
+analysis_width: 640
+analysis_fps: 15
+
+# Output aspect ratio (9:16 vertical)
+target_aspect_ratio:
+  width: 9
+  height: 16
+
+# Output resolution
+output_width: 1080
+output_height: 1920
+
+# EMA smoothing for camera movement (0.0-1.0)
+# Lower = smoother/slower, Higher = faster/more responsive
+ema_alpha: 0.18
+
+# Face crop padding (multiples of face height)
+face_padding_top: 1.2
+face_padding_bottom: 2.0
+
+# Maximum frames to hold last crop when face is lost
+max_detection_gap_frames: 15
+
+# MediaPipe Face Mesh confidence threshold
+detection_confidence: 0.5
+
+# Audio extraction settings
+audio:
+  sample_rate: 16000
+  channels: 1
+
+# Silero Voice Activity Detector settings
+vad:
+  threshold: 0.5
+  version: "6.2.1"
+  min_speech_duration_ms: 250
+  min_silence_duration_ms: 100
+  speech_pad_ms: 30
+  window_size_samples: 512
+
+# Mouth-motion feature settings
+mouth:
+  smoothing_window: 3
+  motion_scale: 0.10
+
+# Active-speaker fusion and hysteresis settings
+active_speaker:
+  audio_weight: 0.4
+  mouth_weight: 0.6
+  audio_visual_window_ms: 300.0
+  minimum_speaker_hold_ms: 500.0
+  speaker_switch_margin: 0.10
+  speaker_switch_min_frames: 3
+  minimum_confidence: 0.50
+  speech_presence_threshold: 0.5
+  min_track_quality: 0.0   # speaker gate (0 = off, baseline; B uses 0.5)
+
+# Selector strategy to run.
+#   "A" = baseline behavior (VAD + mouth + tracking + hysteresis)  [current default]
+#   "B" = enhanced selector: additionally gates the speaker
+#         role on consistently tracked faces and enables the smarter framing
+#         improvements (deadband + velocity cap). Explicit YAML values always
+#         win over the strategy defaults.
+strategy: "A"
+
+# Tracking behavior. Defaults reproduce baseline (15 frames at
+# 15 fps analysis ~ 1000 ms gap tolerance).
+tracking:
+  max_track_gap_ms: 1000.0
+  match_distance: 0.5
+  iou_threshold: 0.2
+
+# Framing/smoothing. Defaults reproduce baseline (EMA only).
+framing:
+  smoothing_alpha: 0.18
+  deadband: 0.0             # center deadband as fraction of frame width
+  max_crop_velocity_percent: null  # per-frame max crop-center velocity limit
+
+# Scene-change detection.
+scene:
+  change_threshold: 0.5
+
+# Per-frame confidence model weights. The confidence
+# computed for a selected face blends speech, mouth and visual evidence
+# and scales by track continuity; see AI_USE.md for the formula.
+confidence:
+  speech_weight: 0.6
+  mouth_weight: 0.25
+  visual_weight: 0.15
+  track_floor: 0.75
+  track_scale: 0.25
+
+# Supported output aspect ratios. The target ratio must be one
+# of these.
+aspect:
+  supported_ratios: ["9:16", "1:1"]

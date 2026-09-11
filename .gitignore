@@ -1,0 +1,103 @@
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+ENV/
+
+# ==============================
+# Testing / Coverage
+# ==============================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# ==============================
+# IDE / Editor
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ==============================
+# Project generated output
+# ==============================
+output/
+outputs/
+renders/
+rendered/
+
+# ==============================
+# Temporary / cache files
+# ==============================
+cache/
+tmp/
+temp/
+*.tmp
+*.log
+
+# ==============================
+# Video / audio generated files
+# ==============================
+*.wav
+*.mp3
+*.aac
+*.m4a
+*.avi
+*.mov
+*.mkv
+
+# Generated analysis files
+decision_timeline.json
+
+# ==============================
+# Model files / checkpoints
+# ==============================
+models/
+checkpoints/
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# ==============================
+# OS files
+# ==============================
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Secrets
+# ==============================
+.env
+.env.*
+*.pem
+*.key
+
+# ==============================
+# Jupyter
+# ==============================
+.ipynb_checkpoints/
+
+# ==============================
+# Misc
+# ==============================
+*.bak
+*.old
