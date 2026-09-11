@@ -36,14 +36,6 @@ htmlcov/
 .DS_Store
 
 # ==============================
-# Project generated output
-# ==============================
-output/
-outputs/
-renders/
-rendered/
-
-# ==============================
 # Temporary / cache files
 # ==============================
 cache/
